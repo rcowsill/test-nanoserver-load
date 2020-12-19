@@ -8,6 +8,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: |
+          docker version
+          docker info
           docker build -t test-image .
           docker images -a
           docker save -o images.tar test-image 6795354d435f
