@@ -10,7 +10,7 @@ jobs:
       - run: |
           docker build -t test-image .
           docker images -a
-          docker save -o images.tar test-image
+          docker save -o images.tar test-image 6795354d435f
 
       - uses: actions/upload-artifact@v2
         with:
