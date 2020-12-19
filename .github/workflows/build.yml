@@ -11,15 +11,13 @@ jobs:
           docker version
           docker info
           docker build -t test-image .
-          docker image inspect 6795354d435f
-          dir -Recurse C:\ProgramData\docker\windowsfilter\eac2bff85a415e7b2c8c604e18bdf69e896759dca81a7420d67ffccb401784a6
-          type C:\ProgramData\docker\windowsfilter\eac2bff85a415e7b2c8c604e18bdf69e896759dca81a7420d67ffccb401784a6\layerchain.json
           docker images -a
           docker save -o images.tar test-image 6795354d435f
+          tar -xf images.tar *.json
 
       - uses: actions/upload-artifact@v2
         with:
-          name: saved-images
-          path: images.tar
-      
+          name: metadata
+          path: "*.json"
+
       - run: docker load -i images.tar
