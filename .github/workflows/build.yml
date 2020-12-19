@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: |
+          docker build -t test-image .
+          docker images -a
+          docker save -o images.tar test-image
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: saved-images
+          path: images.tar
+      
+      - run: docker load -i images.tar
