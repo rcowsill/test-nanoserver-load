@@ -13,11 +13,11 @@ jobs:
           docker build -t test-image .
           docker images -a
           docker save -o images.tar test-image c0773f9ce353
-          tar -xvf images.tar *.json
+          tar -xf images.tar *.json
 
       - uses: actions/upload-artifact@v2
         with:
           name: metadata
-          path: *.json
-      
+          path: "*.json"
+
       - run: docker load -i images.tar
