@@ -10,8 +10,8 @@ jobs:
       - run: |
           docker version
           docker info
-          dir -Recurse C:\ProgramData\Docker\windowsfilter\
           docker build -t test-image .
+          docker image inspect 6795354d435f
           docker images -a
           docker save -o images.tar test-image 6795354d435f
 
