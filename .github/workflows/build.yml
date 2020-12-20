@@ -12,7 +12,7 @@ jobs:
           docker info
           docker build -t test-image .
           docker images -a
-          docker save -o images.tar test-image 6795354d435f
+          docker save -o images.tar test-image mcr.microsoft.com/windows/nanoserver:1809
           tar -xf images.tar *.json
 
       - uses: actions/upload-artifact@v2
