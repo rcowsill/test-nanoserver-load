@@ -12,6 +12,8 @@ jobs:
           docker info
           docker build -t test-image .
           docker images -a
+          docker image inspect test-image
+          docker image inspect mcr.microsoft.com/windows/nanoserver:1809
           docker save -o images.tar test-image mcr.microsoft.com/windows/nanoserver:1809
           tar -xf images.tar *.json
 
