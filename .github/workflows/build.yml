@@ -5,7 +5,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - run: |
           docker version
@@ -15,7 +15,7 @@ jobs:
           docker save -o images.tar test-image mcr.microsoft.com/windows/nanoserver:1809
           tar -xf images.tar *.json
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: metadata
           path: "*.json"
